@@ -1,0 +1,7 @@
+/.idea/
+/__pycache__/
+/mudcogs/__pycache__/
+/char_folder/
+/init_folder/
+/lodecogs/__pycache__/
+/init_master.db
