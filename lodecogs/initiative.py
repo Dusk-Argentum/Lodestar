@@ -145,7 +145,7 @@ class Functions:
     async def combatant_autocomplete(inter, input_: str):
         initiative = await Functions.init_check_exists(inter=inter)
         if isinstance(initiative, disnake.Embed):
-            combatant_name = initiative
+            combatant_name = []
             return combatant_name
         init_uuid = initiative[0][0]
         combatants = await Functions.init_build(inter=inter, init_uuid=init_uuid)
