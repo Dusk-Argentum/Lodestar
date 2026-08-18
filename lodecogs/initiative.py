@@ -1594,6 +1594,7 @@ changed for you. Use </{priority_command.name}:{priority_command.id}> to set a n
         self,
         inter,
         name: str = commands.Param(
+            autocomplete=Functions.combatant_autocomplete,
             description="The name of the combatant you would like to remove.",
             name="name",
             max_length=19,
