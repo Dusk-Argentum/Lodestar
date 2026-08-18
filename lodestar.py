@@ -8,7 +8,7 @@ Made by @dusk_argentum."""
 GUILD = 348897377400258560
 TESTS = []
 TOKEN = os.environ.get("Lodestar_TOKEN")
-VERSION = "1.0.2"
+VERSION = "1.0.4"
 
 
 if TOKEN == os.environ.get("Lodestar_BETA_TOKEN"):

@@ -267,7 +267,8 @@ class Functions:
             [inter.guild.id, inter.channel.id],
         )
         initiative = cur.fetchall()
-        con.close()
+        con.close()  # If initiative exists, returns a non-empty tuple
+        # If init does not exist, returns an empty tuple = False, = embed
         if not initiative:
             initiative = await EmbedBuilder.embed_builder(
                 inter=inter,
@@ -561,12 +562,23 @@ it has been changed for you. Use </{priority_command.name}:{priority_command.id}
         )
         await inter.response.send_message(embed=embed)
         initiative = await Functions.init_check_exists(inter=inter)
-        if initiative is type(disnake.Embed):
-            await inter.edit_original_response(content=None, embed=initiative)
+        if not isinstance(initiative, disnake.Embed):
+            embed = await EmbedBuilder.embed_builder(
+                inter=inter,
+                custom_color=None,
+                custom_thumbnail=None,
+                custom_title=None,
+                description="This channel is already in combat.",
+                fields=None,
+                footer_icon=None,
+                footer_text=None,
+                status="failure",
+            )
+            await inter.edit_original_response(content=None, embed=embed)
             return
         init_uuid = uuid.uuid4()
         con = await Functions.connection(inter=inter, database="init_master")
-        if con is type(disnake.Embed):
+        if isinstance(con, disnake.Embed):
             await inter.edit_original_response(content=None, embed=con)
             return
         cur = con.cursor()
