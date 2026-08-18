@@ -523,7 +523,7 @@ it has been changed for you. Use </{priority_command.name}:{priority_command.id}
                 content=init_turns,
             )
             await pin.forward(inter.channel)
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             try:
                 await inter.channel.send(
                     allowed_mentions=disnake.AllowedMentions(users=False),
@@ -609,7 +609,7 @@ it has been changed for you. Use </{priority_command.name}:{priority_command.id}
             return
         try:
             await pin.pin()
-        except Forbidden, HTTPException, NotFound:
+        except (Forbidden, HTTPException, NotFound):
             pass
         with sqlite3.connect(f"init_folder/{init_uuid}.db", timeout=30) as con:
             cur = con.cursor()
@@ -643,7 +643,7 @@ priority INTEGER, turn INTEGER)"""
                     "```diff\n\n```", "```diff\nAwaiting combatants...\n```"
                 ),
             )
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             try:
                 await inter.channel.send(
                     allowed_mentions=disnake.AllowedMentions(users=False),
@@ -786,7 +786,7 @@ priority INTEGER, turn INTEGER)"""
                 allowed_mentions=disnake.AllowedMentions(users=False),
                 content=init_turns,
             )
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             pass
 
     @commands.slash_command(
@@ -863,7 +863,7 @@ priority INTEGER, turn INTEGER)"""
         try:
             pin = await inter.channel.fetch_message(pin)
             await pin.unpin()
-        except Forbidden, HTTPException, NotFound:
+        except (Forbidden, HTTPException, NotFound):
             pass
 
     @commands.slash_command(
@@ -962,7 +962,7 @@ priority INTEGER, turn INTEGER)"""
                 allowed_mentions=disnake.AllowedMentions(users=False),
                 content=init_turns,
             )
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             pass
 
     @commands.slash_command(description="Jumps to a combatant.", name="jump")
@@ -1103,7 +1103,7 @@ priority INTEGER, turn INTEGER)"""
                 allowed_mentions=disnake.AllowedMentions(users=False),
                 content=init_turns,
             )
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             pass
 
     @commands.slash_command(
@@ -1157,7 +1157,7 @@ priority INTEGER, turn INTEGER)"""
             await pin.edit(init_turns)
             await pin.forward(inter.channel)
             return
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             try:
                 await inter.channel.send(
                     allowed_mentions=disnake.AllowedMentions(users=False),
@@ -1301,7 +1301,7 @@ you. Use </{name_command.name}:{name_command.id}> to set a new one."""
                 allowed_mentions=disnake.AllowedMentions(users=False),
                 content=init_turns,
             )
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             pass
 
     @commands.slash_command(description="Advances initiative.", name="next")
@@ -1461,7 +1461,7 @@ you. Use </{name_command.name}:{name_command.id}> to set a new one."""
                 allowed_mentions=disnake.AllowedMentions(users=False),
                 content=init_turns,
             )
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             return
 
     @commands.slash_command(
@@ -1585,7 +1585,7 @@ changed for you. Use </{priority_command.name}:{priority_command.id}> to set a n
                 allowed_mentions=disnake.AllowedMentions(users=False),
                 content=init_turns,
             )
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             pass
 
     @commands.slash_command(description="Removes a combatant.", name="remove")
@@ -1711,7 +1711,7 @@ changed for you. Use </{priority_command.name}:{priority_command.id}> to set a n
                 allowed_mentions=disnake.AllowedMentions(users=False),
                 content=init_turns,
             )
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             pass
 
     @commands.slash_command(
@@ -1838,7 +1838,7 @@ changed for you. Use </{priority_command.name}:{priority_command.id}> to set a n
                 allowed_mentions=disnake.AllowedMentions(users=False),
                 content=init_turns,
             )
-        except NotFound, Forbidden, HTTPException:
+        except (NotFound, Forbidden, HTTPException):
             pass
 
 
